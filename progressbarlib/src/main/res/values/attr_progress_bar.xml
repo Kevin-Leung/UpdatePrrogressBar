@@ -16,7 +16,7 @@
     </declare-styleable>
     
     <declare-styleable name="RoundProgressBarWidthNumber">
-        <attr name="radius" format="dimension" />
+        <attr name="progress_radius" format="dimension" />
     </declare-styleable>
 
     <declare-styleable name="UpdateProgressBar">

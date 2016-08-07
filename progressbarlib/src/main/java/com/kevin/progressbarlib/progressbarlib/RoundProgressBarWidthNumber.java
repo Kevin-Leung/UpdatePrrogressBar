@@ -30,7 +30,7 @@ public class RoundProgressBarWidthNumber extends
         TypedArray ta = context.obtainStyledAttributes(attrs,
                 R.styleable.RoundProgressBarWidthNumber);
         mRadius = (int) ta.getDimension(
-                R.styleable.RoundProgressBarWidthNumber_radius, mRadius);
+                R.styleable.RoundProgressBarWidthNumber_progress_radius, mRadius);
         ta.recycle();
 
         mPaint.setStyle(Style.STROKE);

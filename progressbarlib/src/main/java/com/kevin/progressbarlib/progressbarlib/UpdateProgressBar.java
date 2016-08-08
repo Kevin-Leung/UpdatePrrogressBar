@@ -86,7 +86,7 @@ public class UpdateProgressBar extends HorizontalProgressBarWithNumber {
         mPaint.setColor(mReachedBarColor);
         mPaint.setStrokeWidth(mReachedProgressBarHeight);
         float sweepAngle = getProgress() * 1.0f / getMax() * 360;
-        canvas.drawArc(new RectF(0, 0, mRadius * 2, mRadius * 2), 0,
+        canvas.drawArc(new RectF(0, 0, mRadius * 2, mRadius * 2), -90,
                 sweepAngle, false, mPaint);
 
         // draw central bitmap

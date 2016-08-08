@@ -23,7 +23,7 @@ public class DeviceUpdateActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case REFRESH_TIME:
-                    if (mRefreshCount < 100) {
+                    if (mRefreshCount < 500) {
                         mRefreshCount++;
                         mProgressBar.setProgress(mRefreshCount);
                         mHandler.sendEmptyMessageDelayed(REFRESH_TIME, 10);

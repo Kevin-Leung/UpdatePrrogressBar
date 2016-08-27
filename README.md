@@ -2,7 +2,7 @@
 this is a progress bar lib of android platform . especially the ble devices update on the phone.
 ## effect
 ![](https://github.com/Kevin-Stark/UpdatePrrogressBar/blob/master/gif/GIF.gif)
-## usuage
+## usage
 add lib in the build.gradle of app,
 add below code.
 ``` XML

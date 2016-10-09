@@ -12,7 +12,7 @@ https://github.com/hongyangAndroid/Android-ProgressBarWidthNumber
 add lib in the build.gradle of app,
 add below code.
 ``` XML
-compile 'com.kevin:progressbarlib:1.0.3'
+compile 'com.kevin:progressbarlib:1.0.4'
 ```
 the in the xml files
 ``` XML

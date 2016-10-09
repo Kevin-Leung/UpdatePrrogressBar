@@ -1,5 +1,9 @@
 # UpdatePrrogressBar
 this is a progress bar lib of android platform . especially the ble devices update on the phone.
+based on the project:
+```XML
+https://github.com/hongyangAndroid/Android-ProgressBarWidthNumber
+```
 ## effect
 ![](https://github.com/Kevin-Stark/UpdatePrrogressBar/blob/master/gif/GIF.gif)
 ## usage

@@ -15,27 +15,28 @@ import android.util.AttributeSet;
 import com.kevin.progressbarlib.R;
 
 
-public class UpdateProgressBar extends HorizontalProgressBarWithNumber {
+//The center is text
+public class TextUpdateProgressBar extends HorizontalProgressBarWithNumber {
     /**
      * mRadius of view
      */
     private int mRadius = dp2px(30);
     private int mMaxPaintWidth;
-    private Bitmap mCentralImage;
+    private String mCentralString;
 
-    public UpdateProgressBar(Context context) {
+    public TextUpdateProgressBar(Context context) {
         this(context, null);
     }
 
-    public UpdateProgressBar(Context context, AttributeSet attrs) {
+    public TextUpdateProgressBar(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        mReachedProgressBarHeight = (int) (mUnReachedProgressBarHeight * 2.5f);
+        mReachedProgressBarHeight = (int) (mUnReachedProgressBarHeight * 1.5f);
         TypedArray ta = context.obtainStyledAttributes(attrs,
-                R.styleable.UpdateProgressBar);
+                R.styleable.TextUpdateProgressBar);
         mRadius = (int) ta.getDimension(
-                R.styleable.UpdateProgressBar_update_radius, mRadius);
-        mCentralImage = BitmapFactory.decodeResource(getResources(), ta.getResourceId(R.styleable.UpdateProgressBar_central_image, 0));
+                R.styleable.TextUpdateProgressBar_text_update_radius, mRadius);
+        mCentralString = ta.getString(R.styleable.TextUpdateProgressBar_central_text);
         ta.recycle();
 
         mPaint.setStyle(Style.STROKE);
@@ -68,7 +69,7 @@ public class UpdateProgressBar extends HorizontalProgressBarWithNumber {
     @Override
     protected synchronized void onDraw(Canvas canvas) {
 
-        String text = getProgress() + "%";
+        String text = mCentralString;
         float textWidth = mPaint.measureText(text);
         float textHeight = (mPaint.descent() + mPaint.ascent()) / 2;
 
@@ -76,31 +77,31 @@ public class UpdateProgressBar extends HorizontalProgressBarWithNumber {
         canvas.translate(getPaddingLeft() + mMaxPaintWidth / 2, getPaddingTop()
                 + mMaxPaintWidth / 2);
         mPaint.setStyle(Style.STROKE);
-
         // draw unreaded bar
         mPaint.setColor(mUnReachedBarColor);
         mPaint.setStrokeWidth(mUnReachedProgressBarHeight);
         canvas.drawCircle(mRadius, mRadius, mRadius, mPaint);
-
         // draw reached bar
         mPaint.setColor(mReachedBarColor);
         mPaint.setStrokeWidth(mReachedProgressBarHeight);
         float sweepAngle = getProgress() * 1.0f / getMax() * 360;
-        canvas.drawArc(new RectF(0, 0, mRadius * 2, mRadius * 2), -90,
+        canvas.drawArc(new RectF(0, 0, mRadius * 2, mRadius * 2), 0,
                 sweepAngle, false, mPaint);
+        // draw text
+        mPaint.setStyle(Style.FILL);
+        mPaint.setTextSize(40);
+        canvas.drawText(text, mRadius - textWidth / 2, mRadius - textHeight,
+                mPaint);
 
-        // draw central bitmap
-        canvas.drawBitmap(mCentralImage, mRadius - mCentralImage.getHeight() / 2, mRadius - mCentralImage.getWidth() / 2, mPaint);
         canvas.restore();
     }
 
-    public Bitmap getCentralImage() {
-        return mCentralImage;
+    public String getCentralText() {
+        return mCentralString;
     }
 
-    public void setCentralImage(Drawable mCentralImage) {
-        BitmapDrawable bd = (BitmapDrawable) mCentralImage;
-        this.mCentralImage = bd.getBitmap();
+    public void setCentralText(String mCentralText) {
+        this.mCentralString = mCentralText;
         invalidate();
     }
 }

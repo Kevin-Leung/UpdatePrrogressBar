@@ -6,15 +6,16 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 
 import com.kevin.progressbarlib.progressbarlib.ImageUpdateProgressBar;
+import com.kevin.progressbarlib.progressbarlib.TextUpdateProgressBar;
 
 /**
  * Rom update of ble devices in android.
  *
  * @author Kevin
  */
-public class DeviceUpdateActivity extends AppCompatActivity {
+public class TextUpdateActivity extends AppCompatActivity {
 
-    private ImageUpdateProgressBar mProgressBar;
+    private TextUpdateProgressBar mProgressBar;
     private static final int REFRESH_TIME = 1;
     private int mRefreshCount;
 
@@ -28,7 +29,6 @@ public class DeviceUpdateActivity extends AppCompatActivity {
                         mProgressBar.setProgress(mRefreshCount);
                         mHandler.sendEmptyMessageDelayed(REFRESH_TIME, 10);
                     } else {
-                        mProgressBar.setCentralImage(getDrawable(R.mipmap.update_finish));
                         mHandler.removeMessages(REFRESH_TIME);
                     }
                     break;
@@ -42,8 +42,8 @@ public class DeviceUpdateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         mRefreshCount = 0;
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        mProgressBar = (ImageUpdateProgressBar) findViewById(R.id.progressbar);
+        setContentView(R.layout.activity_text);
+        mProgressBar = (TextUpdateProgressBar) findViewById(R.id.progressbar);
         mHandler.sendEmptyMessageDelayed(REFRESH_TIME, 100);
     }
 }

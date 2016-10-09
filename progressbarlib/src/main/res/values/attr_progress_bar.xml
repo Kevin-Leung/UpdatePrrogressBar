@@ -19,9 +19,15 @@
         <attr name="progress_radius" format="dimension" />
     </declare-styleable>
 
-    <declare-styleable name="UpdateProgressBar">
+    <declare-styleable name="ImageUpdateProgressBar">
         <attr name="update_radius" format="dimension" />
         <attr name="central_image" format="reference" />
+
+    </declare-styleable>
+
+    <declare-styleable name="TextUpdateProgressBar">
+        <attr name="text_update_radius" format="dimension" />
+        <attr name="central_text" format="string" />
 
     </declare-styleable>
 
